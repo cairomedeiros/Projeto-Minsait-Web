@@ -35,7 +35,13 @@ nav{
         border: 1px solid var(--primary);
     }
     .p-button:focus{
-        outline: 0;
-        border: 1px solid var(--primary);
+        -webkit-box-shadow: 0px 0px 8px 0px rgba(10,136,90,1);
+        -moz-box-shadow: 0px 0px 8px 0px rgba(10,136,90,1);
+        box-shadow: 0px 0px 8px 0px rgba(10,136,90,1);
+    }
+    .p-button:enabled:active {
+        background: var(--primary);
+        color: var(--bg);
+        border-color: var(--primary);
     }
 }
