@@ -1,8 +1,11 @@
 <header>
     <nav>
         <div class="btn-side-bar">
-            <p-sidebar [(visible)]="display" position="left">
-                Content
+            <p-sidebar class="side-bar-content" [(visible)]="display" position="left">
+                <a href="/"><span>Home</span></a>
+                <a href="/register"><span>Cadastro</span></a>
+                <a href="/tutors"><span>Tutores</span></a>
+                <a href="/patients"><span>Pacientes</span></a>
             </p-sidebar>
             <p-button type="text" (click)="display = true" icon="pi pi-bars" label="Menu"></p-button>
         </div>

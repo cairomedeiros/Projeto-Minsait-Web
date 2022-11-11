@@ -7,12 +7,20 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import {SidebarModule} from 'primeng/sidebar';
 import {ButtonModule} from 'primeng/button';
+import { HomeComponent } from './Pages/home/home.component';
+import { RegisterComponent } from './Pages/register/register.component';
+import { TutorComponent } from './Pages/tutor/tutor.component';
+import { PatientComponent } from './Pages/patient/patient.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    HomeComponent,
+    RegisterComponent,
+    TutorComponent,
+    PatientComponent,
   ],
   imports: [
     BrowserModule,
