@@ -1,5 +1,12 @@
 <header>
     <nav>
-        <a class="Logo"><img src="../../../assets/img/chopper-vet-low-resolution-logo-color-on-transparent-background (1).svg" ></a>
+        <div class="btn-side-bar">
+            <p-sidebar [(visible)]="display" position="left">
+                Content
+            </p-sidebar>
+            <p-button type="text" (click)="display = true" icon="pi pi-plus" label="Show"></p-button>
+        </div>
+        
+        <a class="logo"><img src="../../../assets/img/chopper-vet-low-resolution-logo-color-on-transparent-background (1).svg" ></a>
     </nav>
 </header>
