@@ -1,0 +1,24 @@
+nav{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    background: var(--secundary);
+    height: 80px;
+
+
+    -webkit-box-shadow: 0px 8px 38px 1px rgba(36,33,26,0.78);
+    -moz-box-shadow: 0px 8px 38px 1px rgba(36,33,26,0.78);
+    box-shadow: 0px 8px 38px 1px rgba(36,33,26,0.78);
+    position: sticky;
+    .Logo{
+        img{
+            max-width: 250px;
+            width: 100%;
+        }
+        img:hover{
+            max-width: 270px;
+            transition: ease 0.3s;
+            cursor: pointer;
+        }
+    }
+}
