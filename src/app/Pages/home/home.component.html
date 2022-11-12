@@ -1,1 +1,28 @@
-<p>home page</p>
+<div class="card">
+    <p-table [value]="paciente" sortField="tutor.name" sortMode="single" dataKey="tutor.name" rowGroupMode="subheader" groupRowsBy="tutor.name" [tableStyle]="{'min-width': '70rem'}">
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width:20%">Name</th>
+                <th style="width:20%">Company</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="groupheader" let-paciente let-rowIndex="rowIndex" let-expanded="expanded">
+            <tr>
+                <td colspan="5">
+                    <button type="button" pButton pRipple [pRowToggler]="paciente" class="p-button-text p-button-rounded p-button-plain mr-2" [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+                    <span class="font-bold ml-2">{{paciente.tutorId.name}}</span>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="rowexpansion" let-paciente>
+            <tr>
+                <td>
+                    {{paciente.name}}
+                </td>
+                <td>
+                    {{paciente.company}}
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

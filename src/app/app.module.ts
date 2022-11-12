@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import {SidebarModule} from 'primeng/sidebar';
 import {ButtonModule} from 'primeng/button';
+import {TableModule} from 'primeng/table';
+
 import { HomeComponent } from './Pages/home/home.component';
 import { RegisterComponent } from './Pages/register/register.component';
 import { TutorComponent } from './Pages/tutor/tutor.component';
@@ -27,7 +29,8 @@ import { PatientComponent } from './Pages/patient/patient.component';
     BrowserAnimationsModule,
     AppRoutingModule,
     SidebarModule,
-    ButtonModule
+    ButtonModule,
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Tutor, Paciente } from 'src/app/Interfaces/customers';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  tutor: Tutor[] = [
+    {id: "bb", name: "juca"},
+    {id: "a", name: "joaquim"}
+  
+  ]
+  paciente: Paciente[] = [{
+    name: "Mel",
+    company: "n consta",
+    tutorId: this.tutor[0].id
+  },
+  {
+    name: "cairo",
+    company: "vasco",
+    tutorId: this.tutor[1].id
+  }]
+
+  constructor() {}
 
   ngOnInit(): void {
   }

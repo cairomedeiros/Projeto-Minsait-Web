@@ -1,15 +1,16 @@
 <header>
     <nav>
+        <a class="logo"><img src="../../../assets/img/chopper-vet-low-resolution-logo-color-on-transparent-background (1).svg" ></a>
         <div class="btn-side-bar">
             <p-sidebar class="side-bar-content" [(visible)]="display" position="left">
-                <a href="/"><span>Home</span></a>
-                <a href="/register"><span>Cadastro</span></a>
-                <a href="/tutors"><span>Tutores</span></a>
-                <a href="/patients"><span>Pacientes</span></a>
+                <a routerLink="/" (click)="display = false"><span>Home</span></a>
+                <a routerLink="/register" (click)="display = false"><span>Cadastro</span></a>
+                <a routerLink="/tutors" (click)="display = false"><span>Tutores</span></a>
+                <a routerLink="/patients" (click)="display = false"><span>Pacientes</span></a>
             </p-sidebar>
             <p-button type="text" (click)="display = true" icon="pi pi-bars" label="Menu"></p-button>
         </div>
         
-        <a class="logo"><img src="../../../assets/img/chopper-vet-low-resolution-logo-color-on-transparent-background (1).svg" ></a>
+       
     </nav>
 </header>
