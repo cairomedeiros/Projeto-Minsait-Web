@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Tutor, Paciente } from 'src/app/Interfaces/customers';
+import { Tutor } from 'src/app/Interfaces/Tutor';
+import { TutorDTO } from 'src/app/Interfaces/TutorDTO';
 import { TutorService } from 'src/app/Services/Tutor.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { TutorService } from 'src/app/Services/Tutor.service';
 })
 export class HomeComponent implements OnInit {
 
-  tutor: any = [];
+  tutor: Tutor[] = [];
 
   constructor(private tutorService: TutorService) {}
 
