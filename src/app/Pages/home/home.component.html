@@ -1,5 +1,4 @@
 <div class="card">
-    <h5>Vertical</h5>
     <p-table [value]="tutor" [scrollable]="true" scrollHeight="400px" [tableStyle]="{'min-width': '50rem'}">
         <ng-template pTemplate="header">
             <tr>
@@ -7,6 +6,7 @@
                 <th>CPF</th>
                 <th>Data de nascimento</th>
                 <th>Endereço</th>
+                <th>Telefone</th>
                 <th>Funcionalidades</th>
             </tr>
         </ng-template>
@@ -16,24 +16,35 @@
                 <td>{{tutor.cpf}}</td>
                 <td>{{tutor.dataNascimento}}</td>
                 <td>{{tutor.endereco}}</td>
-                <td><button type="button" (click)="showDialog(tutor)" label="Show">Lista de Pets</button></td>
+                <td>{{tutor.telefone}}</td>
+                <td><p-button type="button" (click)="showDialog(tutor)" label="PETS"></p-button>
+                </td>
             </tr>
         </ng-template>
     </p-table>
 </div>
 
-<p-dialog header="Tabela de pets" [(visible)]="display">
+<p-dialog header="Lista de pets do tutor" [(visible)]="display" [style]="{width: '60%'}">
     <div class="card">
-        <h5>Vertical</h5>
         <p-table [value]="tutorPacientes" [scrollable]="true" scrollHeight="400px" [tableStyle]="{'min-width': '50rem'}">
             <ng-template pTemplate="header">
                 <tr>
                     <th>Nome</th>
+                    <th>Espécie</th>
+                    <th>Raça</th>
+                    <th>Idade</th>
+                    <th>Peso</th>
+                    <th>Resultado triagem</th>
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-tutorPacientes>
                 <tr>
                     <td>{{tutorPacientes.nome}}</td>
+                    <td>{{tutorPacientes.especie}}</td>
+                    <td>{{tutorPacientes.raca}}</td>
+                    <td>{{tutorPacientes.idade}}</td>
+                    <td>{{tutorPacientes.peso}}</td>
+                    <td>{{tutorPacientes.eResultadoTriagem}}</td>
                 </tr>
             </ng-template>
         </p-table>
