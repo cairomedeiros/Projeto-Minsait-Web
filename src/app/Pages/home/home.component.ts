@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Tutor, Paciente } from 'src/app/Interfaces/customers';
+import { TutorService } from 'src/app/Services/Tutor.service';
 
 @Component({
   selector: 'app-home',
@@ -8,25 +9,12 @@ import { Tutor, Paciente } from 'src/app/Interfaces/customers';
 })
 export class HomeComponent implements OnInit {
 
-  tutor: Tutor[] = [
-    {id: "bb", name: "juca"},
-    {id: "a", name: "joaquim"}
-  
-  ]
-  paciente: Paciente[] = [{
-    name: "Mel",
-    company: "n consta",
-    tutorId: this.tutor[0].id
-  },
-  {
-    name: "cairo",
-    company: "vasco",
-    tutorId: this.tutor[1].id
-  }]
+  tutor: any = [];
 
-  constructor() {}
+  constructor(private tutorService: TutorService) {}
 
   ngOnInit(): void {
+    this.tutorService.getTutores().subscribe(res => console.log(res));
   }
 
 }

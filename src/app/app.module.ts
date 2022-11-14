@@ -8,7 +8,7 @@ import { HeaderComponent } from './components/header/header.component';
 import {SidebarModule} from 'primeng/sidebar';
 import {ButtonModule} from 'primeng/button';
 import {TableModule} from 'primeng/table';
-
+import {HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './Pages/home/home.component';
 import { CadastroComponent } from './Pages/cadastro/cadastro.component';
 
@@ -26,7 +26,8 @@ import { CadastroComponent } from './Pages/cadastro/cadastro.component';
     AppRoutingModule,
     SidebarModule,
     ButtonModule,
-    TableModule
+    TableModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
