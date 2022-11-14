@@ -1,6 +1,6 @@
 nav {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     background: var(--secundary);
     width: 100%;
@@ -13,6 +13,8 @@ nav {
     top: 0;
 
     .logo {
+        padding-left: 3.6%;
+
         img {
             max-width: 250px;
             width: 100%;
@@ -23,6 +25,10 @@ nav {
             transition: ease 0.3s;
             cursor: pointer;
         }
+    }
+
+    .btn-side-bar{
+        padding-right: 3.6%;
     }
 }
 
