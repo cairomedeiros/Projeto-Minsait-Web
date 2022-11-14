@@ -15,7 +15,10 @@ export class HomeComponent implements OnInit {
   constructor(private tutorService: TutorService) {}
 
   ngOnInit(): void {
-    this.tutorService.getTutores().subscribe(res => console.log(res));
+    this.tutorService.getTutores().subscribe(res => {
+      console.log(res);
+      this.tutor = Object.values(res);
+    })
   }
 
 }
