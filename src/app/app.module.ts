@@ -10,9 +10,7 @@ import {ButtonModule} from 'primeng/button';
 import {TableModule} from 'primeng/table';
 
 import { HomeComponent } from './Pages/home/home.component';
-import { RegisterComponent } from './Pages/register/register.component';
-import { TutorComponent } from './Pages/tutor/tutor.component';
-import { PatientComponent } from './Pages/patient/patient.component';
+import { CadastroComponent } from './Pages/cadastro/cadastro.component';
 
 
 @NgModule({
@@ -20,9 +18,7 @@ import { PatientComponent } from './Pages/patient/patient.component';
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    RegisterComponent,
-    TutorComponent,
-    PatientComponent,
+    CadastroComponent,
   ],
   imports: [
     BrowserModule,
