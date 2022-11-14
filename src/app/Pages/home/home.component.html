@@ -1,9 +1,45 @@
-<div *ngFor="let i of tutor">
-    <p>Nome: {{i.nome}}</p>
-    <p>CPF: {{i.cpf}}</p>
-    <p>DATA NASCIMENTO: {{i.dataNascimento}}</p>
-    <br>
-    <p>nome: {{i.pacienteList[0].nome}}</p>
-    <p>rada: {{i.pacienteList[0].raca}}</p>
-    <br>
+<div class="card">
+    <h5>Vertical</h5>
+    <p-table [value]="tutor" [scrollable]="true" scrollHeight="400px" [tableStyle]="{'min-width': '50rem'}">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Data de nascimento</th>
+                <th>Endereço</th>
+                <th>Funcionalidades</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-tutor>
+            <tr>
+                <td>{{tutor.nome}}</td>
+                <td>{{tutor.cpf}}</td>
+                <td>{{tutor.dataNascimento}}</td>
+                <td>{{tutor.endereco}}</td>
+                <td><button type="button" (click)="showDialog(tutor)" label="Show">Lista de Pets</button></td>
+            </tr>
+        </ng-template>
+    </p-table>
 </div>
+
+<p-dialog header="Tabela de pets" [(visible)]="display">
+    <div class="card">
+        <h5>Vertical</h5>
+        <p-table [value]="tutorPacientes" [scrollable]="true" scrollHeight="400px" [tableStyle]="{'min-width': '50rem'}">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Nome</th>
+                    
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-tutorPacientes>
+                <tr>
+                    <td>{{tutorPacientes.nome}}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</p-dialog>
+
+
+

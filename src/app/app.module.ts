@@ -11,6 +11,7 @@ import {TableModule} from 'primeng/table';
 import {HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './Pages/home/home.component';
 import { CadastroComponent } from './Pages/cadastro/cadastro.component';
+import {DialogModule} from 'primeng/dialog';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { CadastroComponent } from './Pages/cadastro/cadastro.component';
     SidebarModule,
     ButtonModule,
     TableModule,
-    HttpClientModule
+    HttpClientModule,
+    DialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
