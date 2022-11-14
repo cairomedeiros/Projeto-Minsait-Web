@@ -17,4 +17,8 @@ export class TutorService {
   getTutores(): Observable<TutorDTO>{
     return this.http.get<TutorDTO>(`${environment.apiURL}/tutor`);
   }
+
+  updateTutor(id: number | string, value: Tutor): Observable<Tutor>{
+    return this.http.put<Tutor>(`${environment.apiURL}/tutor/${id}`, value);
+  }
 }

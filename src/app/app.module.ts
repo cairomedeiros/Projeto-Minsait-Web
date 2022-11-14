@@ -12,6 +12,8 @@ import {HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './Pages/home/home.component';
 import { CadastroComponent } from './Pages/cadastro/cadastro.component';
 import {DialogModule} from 'primeng/dialog';
+import {InputTextModule} from 'primeng/inputtext';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,7 +21,7 @@ import {DialogModule} from 'primeng/dialog';
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    CadastroComponent,
+    CadastroComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,10 @@ import {DialogModule} from 'primeng/dialog';
     ButtonModule,
     TableModule,
     HttpClientModule,
-    DialogModule
+    DialogModule,
+    InputTextModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
