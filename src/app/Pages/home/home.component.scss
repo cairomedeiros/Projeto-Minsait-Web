@@ -71,9 +71,9 @@
         }
 
         .p-button:focus {
-            -webkit-box-shadow: 0px 0px 8px 0px rgba(215, 134, 20, 1);
-            -moz-box-shadow: 0px 0px 8px 0px rgba(215, 134, 20, 1);
-            box-shadow: 0px 0px 8px 0px rgba(215, 134, 20, 1);
+            -webkit-box-shadow: 0px 0px 8px 0px rgba(129, 20, 13, 1);
+            -moz-box-shadow: 0px 0px 8px 0px rgba(129, 20, 13, 1);
+            box-shadow: 0px 0px 8px 0px rgba(129, 20, 13, 1);
         }
 
         .p-button:enabled:active {
@@ -141,8 +141,7 @@
         .p-inputmask:hover,
         .p-inputtext:hover,
         .p-inputmask:enabled:active,
-        .p-inputtext:enabled:active
-        {
+        .p-inputtext:enabled:active {
             border: 1px solid var(--btn-cancelar-hover);
         }
 
@@ -170,6 +169,32 @@
 
     .acoes {
         .p-button {
+            background: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .p-button:hover {
+            background: var(--hoverBtn);
+            border: 1px solid var(--hoverBtn);
+        }
+
+        .p-button:focus {
+            -webkit-box-shadow: 0px 0px 8px 0px rgba(10, 136, 90, 1);
+            -moz-box-shadow: 0px 0px 8px 0px rgba(10, 136, 90, 1);
+            box-shadow: 0px 0px 8px 0px rgba(10, 136, 90, 1);
+        }
+
+        .p-button:enabled:active {
+            background: var(--primary);
+            color: var(--bg);
+            border-color: var(--primary);
+        }
+    }
+
+
+    .btn-add-tutor {
+        .p-button {
+            margin-top: 30px;
             background: var(--primary);
             border: 1px solid var(--primary);
         }
