@@ -14,6 +14,10 @@ import { CadastroComponent } from './Pages/cadastro/cadastro.component';
 import {DialogModule} from 'primeng/dialog';
 import {InputTextModule} from 'primeng/inputtext';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ConfirmationService} from 'primeng/api';
+import {InputMaskModule} from 'primeng/inputmask';
+
 
 
 @NgModule({
@@ -34,9 +38,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     DialogModule,
     InputTextModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ConfirmDialogModule,
+    InputMaskModule
   ],
-  providers: [],
+  providers: [ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

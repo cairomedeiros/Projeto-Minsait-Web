@@ -21,4 +21,8 @@ export class TutorService {
   updateTutor(id: number | string, value: Tutor): Observable<Tutor>{
     return this.http.put<Tutor>(`${environment.apiURL}/tutor/${id}`, value);
   }
+
+  desativeTutor(id: number | string): Observable<Tutor>{
+    return this.http.delete<Tutor>(`${environment.apiURL}/tutor/${id}`);
+  }
 }

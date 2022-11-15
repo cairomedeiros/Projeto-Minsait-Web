@@ -4,6 +4,7 @@ import { TutorDTO } from 'src/app/Interfaces/TutorDTO';
 import { TutorService } from 'src/app/Services/Tutor.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { PacienteLista } from 'src/app/Interfaces/PacienteLista';
+import {ConfirmationService} from 'primeng/api';
 
 @Component({
   selector: 'app-home',
@@ -21,7 +22,7 @@ export class HomeComponent implements OnInit {
 
   tutorForm!: FormGroup;
 
-  constructor(private tutorService: TutorService, private fb: FormBuilder) {
+  constructor(private tutorService: TutorService, private fb: FormBuilder, private confirmationService: ConfirmationService) {
      this.tutorForm = this.fb.group({
       nome: [''],
       cpf: [''],
@@ -45,19 +46,29 @@ export class HomeComponent implements OnInit {
   }
 
   atualizarTutorDialog(tutor: Tutor){
+    this.tutorForm.reset();
     this.tutorId = tutor.id;
     this.displayAtualizar = true;
   }
 
-  atualizar(){
+  submitAtualizarTutor(){
     this.atualizarTutor();
   }
 
   atualizarTutor(){
     this.tutorService.updateTutor(this.tutorId, this.tutorForm.value)
-      .subscribe(res => console.log(res))
-
+      .subscribe(res => console.log(res));
   }
 
+  confirm(tutor: Tutor){
+    this.confirmationService.confirm({
+      message: "Tem certeza que deseja desativar este tutor?",
+      accept: () => {
+        this.tutorId = tutor.id;
+        this.tutorService.desativeTutor(this.tutorId)
+        .subscribe(res => console.log(res));
+      }
+    })
+  }
 
 }
