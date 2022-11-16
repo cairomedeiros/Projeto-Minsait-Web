@@ -17,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
 import {InputMaskModule} from 'primeng/inputmask';
+import {InputNumberModule} from 'primeng/inputnumber';
 
 
 
@@ -40,7 +41,8 @@ import {InputMaskModule} from 'primeng/inputmask';
     FormsModule,
     ReactiveFormsModule,
     ConfirmDialogModule,
-    InputMaskModule
+    InputMaskModule,
+    InputNumberModule
   ],
   providers: [ConfirmationService],
   bootstrap: [AppComponent]

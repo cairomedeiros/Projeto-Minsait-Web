@@ -1,0 +1,79 @@
+.form-container-criar {
+    padding-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 70vh;
+
+    .content-forms {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        gap: 60px;
+        width: 100%;
+
+        .tutor-form {
+            width: 30%;
+            .form-group {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                margin: 10px 0 10px 0;
+            }
+        }
+
+        .paciente-form{
+            width: 30%;
+            .form-group {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                margin: 10px 0 10px 0;
+            }
+        }
+    }
+}
+
+:host ::ng-deep{
+    .form-container-criar{
+        .content-forms{
+            .tutor-form, .paciente-form{
+                .p-inputtext, .p-inputnumber{
+                    width: 100%;
+                }
+            }
+        }
+        .acoes{
+            
+            .p-button {
+                width: 200px;
+                display: flex;
+                justify-content: center;
+                margin-top: 40px;
+                background: var(--primary);
+                border: 1px solid var(--primary);
+            }
+    
+            .p-button:hover {
+                background: var(--hoverBtn);
+                border: 1px solid var(--hoverBtn);
+            }
+    
+            .p-button:focus {
+                -webkit-box-shadow: 0px 0px 8px 0px rgba(10, 136, 90, 1);
+                -moz-box-shadow: 0px 0px 8px 0px rgba(10, 136, 90, 1);
+                box-shadow: 0px 0px 8px 0px rgba(10, 136, 90, 1);
+            }
+    
+            .p-button:enabled:active {
+                background: var(--primary);
+                color: var(--bg);
+                border-color: var(--primary);
+            }
+        }
+    }
+}

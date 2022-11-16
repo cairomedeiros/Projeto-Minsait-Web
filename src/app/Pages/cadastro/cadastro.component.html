@@ -1,1 +1,60 @@
-<p>cadastro works!</p>
+<form class="form-container-criar" [formGroup]="tutorForm" #formDir="ngForm">
+    <div class="content-forms">
+        <div class="tutor-form">
+            <h1>Tutor</h1>
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" formControlName="nome" placeholder="Nome" pInputText />
+            </div>
+            <div class="form-group">
+                <label for="cpf">CPF</label>
+                <p-inputMask mask="999.999.999-99" id="cpf" formControlName="cpf" placeholder="cpf"></p-inputMask>
+            </div>
+            <div class="form-group">
+                <label for="endereco">Endereço</label>
+                <input type="text" id="endereco" formControlName="endereco" pInputText placeholder="endereço"/>
+            </div>
+            <div class="form-group">
+                <label for="telefone">Telefone</label>
+                <p-inputMask mask="(99) 9 9999-9999" id="telefone" formControlName="telefone" placeholder="(99) 9 9999-9999"></p-inputMask>
+            </div>
+            <div class="form-group">
+                <label for="dataNascimento">Data de nascimento</label>
+                <p-inputMask formControlName="dataNascimento" mask="99/99/9999" placeholder="99/99/9999"
+                    slotChar="dd/MM/yyyy" id="dataNascimento"></p-inputMask>
+            </div>
+        </div>
+
+        <div class="paciente-form">
+            <h1>Paciente</h1>
+            <div class="form-group">
+                <label for="nomeP">Nome</label>
+                <input type="text" id="nomeP" formControlName="nomeP" pInputText placeholder="Nome do Pet"/>
+            </div>
+            <div class="form-group">
+                <label for="especie">Especie</label>
+                <input type="text" id="especie" formControlName="especie" pInputText placeholder="Espécie"/>
+            </div>
+            <div class="form-group">
+                <label for="raca">Raça</label>
+                <input type="text" id="raca" formControlName="raca" pInputText placeholder="Raça"/>
+            </div>
+            <div class="form-group">
+                <label for="idade">Idade</label>
+                <p-inputNumber inputId="integeronly" formControlName="idade"></p-inputNumber>
+            </div>
+            <div class="form-group">
+                <label for="peso">Peso</label>
+                <p-inputNumber inputId="minmaxfraction" formControlName="peso" mode="decimal" [minFractionDigits]="2"
+                    [maxFractionDigits]="5">
+                </p-inputNumber>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="acoes">
+        <p-button type="button">Cadastro</p-button>
+    </div>
+
+</form>

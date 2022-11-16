@@ -32,7 +32,7 @@
     
 </p-confirmDialog>
 
-<p-dialog header="Lista de pets do tutor" [(visible)]="display" [style]="{width: '60%'}">
+<p-dialog header="Lista de pets do tutor" [(visible)]="display" [modal]="true" [style]="{width: '60%'}">
     <div class="card">
         <p-table [value]="tutorPacientes" [scrollable]="true" scrollHeight="400px" [tableStyle]="{'min-width': '50rem'}">
             <ng-template pTemplate="header">
@@ -59,7 +59,7 @@
     </div>
 </p-dialog>
 
-<p-dialog header="Atualizar Dados" [(visible)]="displayAtualizar">
+<p-dialog header="Atualizar Dados" [(visible)]="displayAtualizar" [modal]="true">
     <form class="form-container"  [formGroup]="tutorForm" (ngSubmit)="submitAtualizarTutor()" #formDir="ngForm">
         <div class="form-group">
             <label for="nome">Nome</label>
