@@ -12,7 +12,7 @@ export class DesativadosComponent implements OnInit {
   constructor(private tutorService: TutorService) { }
 
   tutor: Tutor[] = [];
-  tutorId: any;
+  tutorId: number | string = "";
 
   ngOnInit(): void {
     this.tutorService.getDesativeTutores().subscribe(res => {

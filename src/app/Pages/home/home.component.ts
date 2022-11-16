@@ -3,8 +3,7 @@ import { Tutor } from 'src/app/Interfaces/Tutor';
 import { TutorDTO } from 'src/app/Interfaces/TutorDTO';
 import { TutorService } from 'src/app/Services/Tutor.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { PacienteLista } from 'src/app/Interfaces/PacienteLista';
-import {ConfirmationService} from 'primeng/api';
+import { ConfirmationService } from 'primeng/api';
 import { PacienteService } from 'src/app/Services/paciente.service';
 import { PacienteCriarDTO } from 'src/app/Interfaces/PacienteCriarDTO';
 import { PacienteAdicionarDTO } from 'src/app/Interfaces/PacienteAdicionarDTO';
@@ -19,7 +18,7 @@ export class HomeComponent implements OnInit {
 
   tutor: Tutor[] = [];
   display: boolean = false;
-  tutorPacientes: PacienteLista[] = [];
+  tutorPacientes: Paciente[] = [];
 
   displayAtualizar: boolean = false;
   tutorId: number | string = "";
@@ -43,15 +42,15 @@ export class HomeComponent implements OnInit {
   pacienteForm!: FormGroup;
 
   constructor(private tutorService: TutorService, private pacienteService: PacienteService, private fb: FormBuilder, private confirmationService: ConfirmationService) {
-     this.tutorForm = this.fb.group({
+    this.tutorForm = this.fb.group({
       nome: [''],
       cpf: [''],
       endereco: [''],
       telefone: [''],
       dataNascimento: ['']
-     })
+    })
 
-     this.pacienteForm = this.fb.group({
+    this.pacienteForm = this.fb.group({
       nome: [''],
       especie: [''],
       raca: [''],
@@ -59,7 +58,7 @@ export class HomeComponent implements OnInit {
       peso: [''],
       cor: [''],
       eResultadoTriagem: ['']
-     })
+    })
   }
 
   ngOnInit(): void {
@@ -75,54 +74,54 @@ export class HomeComponent implements OnInit {
     this.display = true;
   }
 
-  atualizarTutorDialog(tutor: Tutor){
+  atualizarTutorDialog(tutor: Tutor) {
     this.tutorForm.reset();
     this.tutorId = tutor.id;
     this.displayAtualizar = true;
   }
 
-  submitAtualizarTutor(){
+  submitAtualizarTutor() {
     this.atualizarTutor();
   }
 
-  atualizarTutor(){
+  atualizarTutor() {
     this.tutorService.updateTutor(this.tutorId, this.tutorForm.value)
       .subscribe(res => console.log(res));
   }
 
-  confirm(tutor: Tutor){
+  confirm(tutor: Tutor) {
     this.confirmationService.confirm({
       message: "Tem certeza que deseja desativar este tutor?",
       accept: () => {
         this.tutorId = tutor.id;
         this.tutorService.desativeTutor(this.tutorId)
-        .subscribe(res => console.log(res));
+          .subscribe(res => console.log(res));
       }
     })
   }
 
-  atualizarPetDialog(paciente: any){
+  atualizarPetDialog(paciente: Paciente) {
     this.pacienteForm.reset();
     this.pacienteId = paciente.id;
     this.displayAtualizarPet = true;
   }
 
-  atualizarPet(){
+  atualizarPet() {
     this.tutor
   }
 
-  submitAtualizarPet(){
+  submitAtualizarPet() {
     this.pacienteService.atualizarPet(this.pacienteId, this.pacienteForm.value).subscribe(res => console.log(res));
   }
 
-  adicionarPetDialogOficial(tutor: Tutor){
+  adicionarPetDialogOficial(tutor: Tutor) {
     this.pacienteForm.reset();
     this.tutorId = "";
     this.tutorId = tutor.id;
     this.displayAdicionarPet = true;
   }
 
-  submitAdicionarPet(){
+  submitAdicionarPet() {
     this.paciente.nome = this.pacienteForm.value.nome;
     this.paciente.especie = this.pacienteForm.value.especie;
     this.paciente.raca = this.pacienteForm.value.raca;
@@ -135,13 +134,13 @@ export class HomeComponent implements OnInit {
     this.pacienteService.criarPet(this.paciente).subscribe(res => console.log(res));
   }
 
-  confirm2(paciente: Paciente){
+  confirm2(paciente: Paciente) {
     this.confirmationService.confirm({
       message: "Tem certeza que deseja desativar este paciente?",
       accept: () => {
         this.pacienteId = paciente.id;
         this.pacienteService.excluirPet(this.pacienteId)
-        .subscribe(res => console.log(res));
+          .subscribe(res => console.log(res));
       }
     })
   }

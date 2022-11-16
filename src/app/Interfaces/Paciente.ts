@@ -1,4 +1,3 @@
-
 export interface Paciente{
     id: string | number;
     nome: string;

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Paciente } from '../Interfaces/Paciente';
 import { PacienteCriarDTO } from '../Interfaces/PacienteCriarDTO';
 
 @Injectable({
@@ -11,15 +12,15 @@ export class PacienteService {
 
   constructor(private httpClient: HttpClient) { }
 
-  atualizarPet(id: number | string, value: any): Observable<any>{
-    return this.httpClient.put<any>(`${environment.apiURL}/paciente/${id}`, value);
+  atualizarPet(id: number | string, paciente: Paciente): Observable<Paciente> {
+    return this.httpClient.put<Paciente>(`${environment.apiURL}/paciente/${id}`, paciente);
   }
 
-  criarPet(paciente: PacienteCriarDTO):Observable<PacienteCriarDTO>{
+  criarPet(paciente: PacienteCriarDTO): Observable<PacienteCriarDTO> {
     return this.httpClient.post<PacienteCriarDTO>(`${environment.apiURL}/paciente`, paciente)
   }
 
-  excluirPet(id: number | string): Observable<any>{
-    return this.httpClient.delete<any>(`${environment.apiURL}/paciente/${id}`);
+  excluirPet(id: number | string): Observable<Paciente> {
+    return this.httpClient.delete<Paciente>(`${environment.apiURL}/paciente/${id}`);
   }
 }
