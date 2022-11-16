@@ -30,4 +30,12 @@ export class TutorService {
   createTutor(tutor: TutorCriarDTO){
     return this.http.post(`${environment.apiURL}/tutor`, tutor);
   }
+
+  getDesativeTutores(): Observable<TutorDTO>{
+    return this.http.get<TutorDTO>(`${environment.apiURL}/tutor/desativados`);
+  }
+
+  ativarTutor(id: number | string): Observable<Tutor>{
+    return this.http.delete<Tutor>(`${environment.apiURL}/tutor/ativar/${id}`);
+  }
 }

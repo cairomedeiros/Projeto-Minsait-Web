@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Tutor } from 'src/app/Interfaces/Tutor';
+import { TutorService } from 'src/app/Services/Tutor.service';
 
 @Component({
   selector: 'app-desativados',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DesativadosComponent implements OnInit {
 
-  constructor() { }
+  constructor(private tutorService: TutorService) { }
+
+  tutor: Tutor[] = [];
+  tutorId: any;
 
   ngOnInit(): void {
+    this.tutorService.getDesativeTutores().subscribe(res => {
+      console.log(res);
+      this.tutor = Object.values(res);
+    })
+  }
+
+  ativarTutor(tutor: Tutor) {
+    this.tutorId = tutor.id;
+    this.tutorService.ativarTutor(this.tutorId)
+      .subscribe(res => console.log(res));
   }
 
 }

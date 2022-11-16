@@ -1,1 +1,26 @@
-<p>desativados works!</p>
+<div class="card">
+    <h1>DESATIVADOS</h1>
+    <p-table [value]="tutor" [scrollable]="true" scrollHeight="400px" [tableStyle]="{'min-width': '50rem'}">
+        
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Data de nascimento</th>
+                <th>Endereço</th>
+                <th>Telefone</th>
+                <th>Ativar Tutor</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-tutor>
+            <tr>
+                <td>{{tutor.nome}}</td>
+                <td>{{tutor.cpf}}</td>
+                <td>{{tutor.dataNascimento}}</td>
+                <td>{{tutor.endereco}}</td>
+                <td>{{tutor.telefone}}</td>
+                <td> <p-button class="btn-ativar-tutor" type="button" (click)="ativarTutor(tutor)" label="Ativar"></p-button></td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
