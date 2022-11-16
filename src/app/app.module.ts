@@ -18,6 +18,7 @@ import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
 import {InputMaskModule} from 'primeng/inputmask';
 import {InputNumberModule} from 'primeng/inputnumber';
+import { DesativadosComponent } from './Pages/desativados/desativados.component';
 
 
 
@@ -26,7 +27,8 @@ import {InputNumberModule} from 'primeng/inputnumber';
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    CadastroComponent
+    CadastroComponent,
+    DesativadosComponent
   ],
   imports: [
     BrowserModule,

@@ -3,8 +3,9 @@
         <a class="logo"><img src="../../../assets/img/chopper-vet-low-resolution-logo-color-on-transparent-background (1).svg" ></a>
         <div class="btn-side-bar">
             <p-sidebar class="side-bar-content" [(visible)]="display" position="left">
-                <a routerLink="/" (click)="display = false"><span>Home</span></a>
+                <a routerLink="/" (click)="display = false"><span>Página inicial</span></a>
                 <a routerLink="/cadastro" (click)="display = false"><span>Cadastro</span></a>
+                <a routerLink="/desativados" (click)="display = false"><span>Tutores desativados</span></a>
             </p-sidebar>
             <p-button type="text" (click)="display = true" icon="pi pi-bars" label="Menu"></p-button>
         </div>
