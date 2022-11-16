@@ -21,6 +21,7 @@
                     <p-button class="btn-pets" type="button" (click)="showDialog(tutor)" label="PETS"></p-button>
                     <p-button class="btn-atualizar" type="button" (click)="atualizarTutorDialog(tutor)" label="Atualizar"></p-button>
                     <p-button class="btn-desativar" type="button" (click)="confirm(tutor)" label="Desativar"></p-button>
+                    <p-button class="btn-adicionar" type="button" (click)="display = false" (click)="adicionarPetDialogOficial(tutor)" label="Novo Pet"></p-button>
                 </td>
             </tr>
         </ng-template>
@@ -56,7 +57,7 @@
                     <td>{{tutorPacientes.eResultadoTriagem}}</td>
                     <td>
                         <p-button class="btn-atualizar" type="button" (click)="display = false" (click)="atualizarPetDialog(tutorPacientes)" label="Atualizar Pet"></p-button>
-                        <p-button class="btn-adicionar" type="button" (click)="display = false" (click)="adicionarPetDialog(tutor)" label="Novo Pet"></p-button>
+                        <p-button class="btn-desativar" type="button" (click)="confirm2(tutorPacientes)" label="Deletar"></p-button>
                     </td>
                 </tr>
             </ng-template>
@@ -129,7 +130,7 @@
 </p-dialog>
 
 <p-dialog header="Atualizar Dados" [(visible)]="displayAdicionarPet" [modal]="true">
-    <form class="form-container"  [formGroup]="pacienteForm" (ngSubmit)="submitAtualizarPet()" #formDir="ngForm">
+    <form class="form-container"  [formGroup]="pacienteForm" (ngSubmit)="submitAdicionarPet()" #formDir="ngForm">
         <div class="form-group">
             <label for="nome">Nome</label>
             <input type="text" id="nome" formControlName="nome" pInputText/>

@@ -18,4 +18,8 @@ export class PacienteService {
   criarPet(paciente: PacienteCriarDTO):Observable<PacienteCriarDTO>{
     return this.httpClient.post<PacienteCriarDTO>(`${environment.apiURL}/paciente`, paciente)
   }
+
+  excluirPet(id: number | string): Observable<any>{
+    return this.httpClient.delete<any>(`${environment.apiURL}/paciente/${id}`);
+  }
 }

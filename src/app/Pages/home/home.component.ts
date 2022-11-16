@@ -8,6 +8,7 @@ import {ConfirmationService} from 'primeng/api';
 import { PacienteService } from 'src/app/Services/paciente.service';
 import { PacienteCriarDTO } from 'src/app/Interfaces/PacienteCriarDTO';
 import { PacienteAdicionarDTO } from 'src/app/Interfaces/PacienteAdicionarDTO';
+import { Paciente } from 'src/app/Interfaces/Paciente';
 
 @Component({
   selector: 'app-home',
@@ -114,17 +115,34 @@ export class HomeComponent implements OnInit {
     this.pacienteService.atualizarPet(this.pacienteId, this.pacienteForm.value).subscribe(res => console.log(res));
   }
 
+  adicionarPetDialogOficial(tutor: Tutor){
+    this.pacienteForm.reset();
+    this.tutorId = "";
+    this.tutorId = tutor.id;
+    this.displayAdicionarPet = true;
+  }
 
-  adicionarPetDialog(tutor: any){
+  submitAdicionarPet(){
     this.paciente.nome = this.pacienteForm.value.nome;
     this.paciente.especie = this.pacienteForm.value.especie;
     this.paciente.raca = this.pacienteForm.value.raca;
     this.paciente.idade = this.pacienteForm.value.idade;
     this.paciente.peso = this.pacienteForm.value.peso;
     this.paciente.cor = this.pacienteForm.value.cor;
-    this.paciente.tutorId = tutor.id;
+    this.paciente.tutorId = this.tutorId;
     this.paciente.eResultadoTriagem = this.pacienteForm.value.eResultadoTriagem;
 
     this.pacienteService.criarPet(this.paciente).subscribe(res => console.log(res));
+  }
+
+  confirm2(paciente: Paciente){
+    this.confirmationService.confirm({
+      message: "Tem certeza que deseja desativar este paciente?",
+      accept: () => {
+        this.pacienteId = paciente.id;
+        this.pacienteService.excluirPet(this.pacienteId)
+        .subscribe(res => console.log(res));
+      }
+    })
   }
 }
