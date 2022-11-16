@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TutorService } from 'src/app/Services/Tutor.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Tutor } from 'src/app/Interfaces/Tutor';
+import { TutorCriarDTO } from 'src/app/Interfaces/TutorCriarDTO';
 
 @Component({
   selector: 'app-cadastro',
@@ -10,6 +12,23 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class CadastroComponent implements OnInit {
 
   tutorForm!: FormGroup;
+  tutorCriarDTO: TutorCriarDTO = {
+    nome: "",
+    cpf: "",
+    endereco: "",
+    telefone: "",
+    dataNascimento: "",
+    pacienteList: [{
+      nome: "",
+      especie: "",
+      raca: "",
+      idade: 0,
+      peso: 0,
+      cor: "",
+      eResultadoTriagem: 0
+    }]
+
+  };
 
   constructor(private tutorService: TutorService, private fb: FormBuilder) { 
     this.tutorForm = this.fb.group({
@@ -18,11 +37,13 @@ export class CadastroComponent implements OnInit {
       endereco: [''],
       telefone: [''],
       dataNascimento: [''],
-      nomeP: [''],
+      nomep: [''],
       especie: [''],
       raca: [''],
       idade: [''],
-      peso: ['']
+      peso: [''],
+      cor: [''],
+      eResultadoTriagem: ['']
 
      })
   }
@@ -30,6 +51,26 @@ export class CadastroComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  submitCadastro(){
+    this.cadastroTutor();
+  }
 
+  cadastroTutor(){
+    console.log('entrou');
+    this. tutorCriarDTO.nome = this.tutorForm.value.nome;
+    this. tutorCriarDTO.cpf = this.tutorForm.value.cpf;
+    this. tutorCriarDTO.endereco = this.tutorForm.value.endereco;
+    this. tutorCriarDTO.telefone = this.tutorForm.value.telefone;
+    this. tutorCriarDTO.dataNascimento = this.tutorForm.value.dataNascimento;
+    this. tutorCriarDTO.pacienteList[0].nome = this.tutorForm.value.nomep;
+    this. tutorCriarDTO.pacienteList[0].especie = this.tutorForm.value.especie;
+    this. tutorCriarDTO.pacienteList[0].raca = this.tutorForm.value.raca;
+    this. tutorCriarDTO.pacienteList[0].idade = this.tutorForm.value.idade;
+    this. tutorCriarDTO.pacienteList[0].peso = this.tutorForm.value.peso;
+    this. tutorCriarDTO.pacienteList[0].cor = this.tutorForm.value.cor;
+    this. tutorCriarDTO.pacienteList[0].eResultadoTriagem = this.tutorForm.value.eResultadoTriagem;
+
+    this.tutorService.createTutor(this. tutorCriarDTO).subscribe(res => console.log(res));
+  }
 
 }

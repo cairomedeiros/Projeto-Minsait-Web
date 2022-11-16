@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { TutorDTO } from '../Interfaces/TutorDTO';
 import { Tutor } from '../Interfaces/Tutor';
+import { TutorCriarDTO } from '../Interfaces/TutorCriarDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -24,5 +25,9 @@ export class TutorService {
 
   desativeTutor(id: number | string): Observable<Tutor>{
     return this.http.delete<Tutor>(`${environment.apiURL}/tutor/${id}`);
+  }
+
+  createTutor(tutor: TutorCriarDTO){
+    return this.http.post(`${environment.apiURL}/tutor`, tutor);
   }
 }
