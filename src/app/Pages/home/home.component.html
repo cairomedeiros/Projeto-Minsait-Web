@@ -43,6 +43,7 @@
                     <th>Idade</th>
                     <th>Peso</th>
                     <th>Resultado triagem</th>
+                    <th>Funcionalidades</th>
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-tutorPacientes>
@@ -53,6 +54,10 @@
                     <td>{{tutorPacientes.idade}}</td>
                     <td>{{tutorPacientes.peso}}</td>
                     <td>{{tutorPacientes.eResultadoTriagem}}</td>
+                    <td>
+                        <p-button class="btn-atualizar" type="button" (click)="display = false" (click)="atualizarPetDialog(tutorPacientes)" label="Atualizar Pet"></p-button>
+                        <p-button class="btn-adicionar" type="button" (click)="display = false" (click)="adicionarPetDialog(tutor)" label="Novo Pet"></p-button>
+                    </td>
                 </tr>
             </ng-template>
         </p-table>
@@ -83,6 +88,78 @@
         </div>
         <div class="acoes">
             <p-button type="submit">Atualizar</p-button>
+        </div>
+    </form>
+</p-dialog>
+
+<p-dialog header="Atualizar Dados" [(visible)]="displayAtualizarPet" [modal]="true">
+    <form class="form-container"  [formGroup]="pacienteForm" (ngSubmit)="submitAtualizarPet()" #formDir="ngForm">
+        <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" formControlName="nome" pInputText/>
+        </div>
+        <div class="form-group">
+            <label for="especie">Espécie</label>
+            <input id="especie" formControlName="especie" pInputText/>
+        </div>
+        <div class="form-group">
+            <label for="raca">Raça</label>
+            <input type="text" id="raca" formControlName="raca" pInputText/>
+        </div>
+        <div class="form-group">
+            <label for="idade">Idade</label>
+            <input type="number" id="idade" formControlName="idade" pInputText/>
+        </div>
+        <div class="form-group">
+            <label for="peso">Peso</label>
+            <input type="number" id="peso" formControlName="peso" pInputText/>
+        </div>
+        <div class="form-group">
+            <label for="cor">Cor</label>
+            <input type="text" id="cor" formControlName="cor" pInputText/>
+        </div>
+        <div class="form-group">
+            <label for="eResultadoTriagem">Resultado triagem</label>
+            <input type="number" id="eResultadoTriagem" formControlName="eResultadoTriagem" pInputText/>
+        </div>
+        <div class="acoes">
+            <p-button type="submit">Atualizar</p-button>
+        </div>
+    </form>
+</p-dialog>
+
+<p-dialog header="Atualizar Dados" [(visible)]="displayAdicionarPet" [modal]="true">
+    <form class="form-container"  [formGroup]="pacienteForm" (ngSubmit)="submitAtualizarPet()" #formDir="ngForm">
+        <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" formControlName="nome" pInputText/>
+        </div>
+        <div class="form-group">
+            <label for="especie">Espécie</label>
+            <input id="especie" formControlName="especie" pInputText/>
+        </div>
+        <div class="form-group">
+            <label for="raca">Raça</label>
+            <input type="text" id="raca" formControlName="raca" pInputText/>
+        </div>
+        <div class="form-group">
+            <label for="idade">Idade</label>
+            <input type="number" id="idade" formControlName="idade" pInputText/>
+        </div>
+        <div class="form-group">
+            <label for="peso">Peso</label>
+            <input type="number" id="peso" formControlName="peso" pInputText/>
+        </div>
+        <div class="form-group">
+            <label for="cor">Cor</label>
+            <input type="text" id="cor" formControlName="cor" pInputText/>
+        </div>
+        <div class="form-group">
+            <label for="eResultadoTriagem">Resultado triagem</label>
+            <input type="number" id="eResultadoTriagem" formControlName="eResultadoTriagem" pInputText/>
+        </div>
+        <div class="acoes">
+            <p-button type="submit">Adicionar</p-button>
         </div>
     </form>
 </p-dialog>

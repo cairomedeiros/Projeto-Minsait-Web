@@ -5,6 +5,9 @@ import { TutorService } from 'src/app/Services/Tutor.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { PacienteLista } from 'src/app/Interfaces/PacienteLista';
 import {ConfirmationService} from 'primeng/api';
+import { PacienteService } from 'src/app/Services/paciente.service';
+import { PacienteCriarDTO } from 'src/app/Interfaces/PacienteCriarDTO';
+import { PacienteAdicionarDTO } from 'src/app/Interfaces/PacienteAdicionarDTO';
 
 @Component({
   selector: 'app-home',
@@ -20,15 +23,41 @@ export class HomeComponent implements OnInit {
   displayAtualizar: boolean = false;
   tutorId: number | string = "";
 
-  tutorForm!: FormGroup;
+  displayAtualizarPet: boolean = false;
+  pacienteId: number | string = "";
 
-  constructor(private tutorService: TutorService, private fb: FormBuilder, private confirmationService: ConfirmationService) {
+  displayAdicionarPet: boolean = false;
+  paciente: PacienteAdicionarDTO = {
+    nome: "",
+    especie: "",
+    raca: "",
+    idade: 0,
+    peso: 0,
+    cor: "",
+    tutorId: "",
+    eResultadoTriagem: 0
+  }
+
+  tutorForm!: FormGroup;
+  pacienteForm!: FormGroup;
+
+  constructor(private tutorService: TutorService, private pacienteService: PacienteService, private fb: FormBuilder, private confirmationService: ConfirmationService) {
      this.tutorForm = this.fb.group({
       nome: [''],
       cpf: [''],
       endereco: [''],
       telefone: [''],
       dataNascimento: ['']
+     })
+
+     this.pacienteForm = this.fb.group({
+      nome: [''],
+      especie: [''],
+      raca: [''],
+      idade: [''],
+      peso: [''],
+      cor: [''],
+      eResultadoTriagem: ['']
      })
   }
 
@@ -71,4 +100,31 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  atualizarPetDialog(paciente: any){
+    this.pacienteForm.reset();
+    this.pacienteId = paciente.id;
+    this.displayAtualizarPet = true;
+  }
+
+  atualizarPet(){
+    this.tutor
+  }
+
+  submitAtualizarPet(){
+    this.pacienteService.atualizarPet(this.pacienteId, this.pacienteForm.value).subscribe(res => console.log(res));
+  }
+
+
+  adicionarPetDialog(tutor: any){
+    this.paciente.nome = this.pacienteForm.value.nome;
+    this.paciente.especie = this.pacienteForm.value.especie;
+    this.paciente.raca = this.pacienteForm.value.raca;
+    this.paciente.idade = this.pacienteForm.value.idade;
+    this.paciente.peso = this.pacienteForm.value.peso;
+    this.paciente.cor = this.pacienteForm.value.cor;
+    this.paciente.tutorId = tutor.id;
+    this.paciente.eResultadoTriagem = this.pacienteForm.value.eResultadoTriagem;
+
+    this.pacienteService.criarPet(this.paciente).subscribe(res => console.log(res));
+  }
 }
