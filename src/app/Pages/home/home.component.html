@@ -53,7 +53,7 @@
                     <td>{{tutorPacientes.raca}}</td>
                     <td>{{tutorPacientes.idade}}</td>
                     <td>{{tutorPacientes.peso}}</td>
-                    <td>{{tutorPacientes.eResultadoTriagem}}</td>
+                    <td>{{eResultadoTriagem(tutorPacientes.eResultadoTriagem)}}</td>
                     <td>
                         <p-button class="btn-atualizar" type="button" (click)="display = false" (click)="atualizarPetDialog(tutorPacientes)" label="Atualizar Pet"></p-button>
                         <p-button class="btn-desativar" type="button" (click)="confirm2(tutorPacientes)" label="Deletar"></p-button>

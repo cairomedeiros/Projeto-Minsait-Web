@@ -49,6 +49,31 @@ export class HomeComponent implements OnInit {
   tutorForm!: FormGroup;
   pacienteForm!: FormGroup;
 
+  eResultadoTriagem(e: number){
+    switch(e){
+      case 0 : 
+        return "Cardiologia";
+      case 1 : 
+        return "Nefrologia";
+      case 2 : 
+        return "Endocrinologia";
+      case 3 : 
+        return "Fisioterapia";
+      case 4 : 
+        return "Hematologia";
+      case 5 : 
+        return "Odontologia";
+      case 6 : 
+        return "Nutrologia";
+      case 7 : 
+        return "Ortopedia";
+      case 8 : 
+        return "Oftalmologia";
+      default:
+        return "Triagem não feita";
+    }
+  }
+
   constructor(private tutorService: TutorService,
     private pacienteService: PacienteService,
     private fb: FormBuilder,
