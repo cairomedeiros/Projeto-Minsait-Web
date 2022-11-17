@@ -1,3 +1,27 @@
-.card{
+.card {
     margin: 50px 3.8% 0;
+}
+
+:host ::ng-deep {
+    .p-button {
+        background: var(--primary);
+        border: 1px solid var(--primary);
+    }
+
+    .p-button:hover {
+        background: var(--hoverBtn);
+        border: 1px solid var(--hoverBtn);
+    }
+
+    .p-button:focus {
+        -webkit-box-shadow: 0px 0px 8px 0px rgba(10, 136, 90, 1);
+        -moz-box-shadow: 0px 0px 8px 0px rgba(10, 136, 90, 1);
+        box-shadow: 0px 0px 8px 0px rgba(10, 136, 90, 1);
+    }
+
+    .p-button:enabled:active {
+        background: var(--primary);
+        color: var(--bg);
+        border-color: var(--primary);
+    }
 }
