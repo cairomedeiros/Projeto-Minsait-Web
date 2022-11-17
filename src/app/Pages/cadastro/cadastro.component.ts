@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TutorService } from 'src/app/Services/Tutor.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Tutor } from 'src/app/Interfaces/Tutor';
+import { Router } from '@angular/router';
 import { TutorCriarDTO } from 'src/app/Interfaces/TutorCriarDTO';
 
 @Component({
@@ -30,7 +30,11 @@ export class CadastroComponent implements OnInit {
 
   };
 
-  constructor(private tutorService: TutorService, private fb: FormBuilder) {
+  constructor(
+    private tutorService: TutorService, 
+    private fb: FormBuilder,
+    private router: Router
+    ) {
     this.tutorForm = this.fb.group({
       nome: [''],
       cpf: [''],
@@ -70,7 +74,9 @@ export class CadastroComponent implements OnInit {
     this.tutorCriarDTO.pacienteList[0].cor = this.tutorForm.value.cor;
     this.tutorCriarDTO.pacienteList[0].eResultadoTriagem = this.tutorForm.value.eResultadoTriagem;
 
-    this.tutorService.createTutor(this.tutorCriarDTO).subscribe(res => console.log(res));
+    this.tutorService.createTutor(this.tutorCriarDTO).subscribe(() => {
+      this.router.navigate([""]);
+    });
   }
 
 }
