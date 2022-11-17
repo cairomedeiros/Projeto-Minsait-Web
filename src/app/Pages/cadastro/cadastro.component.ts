@@ -15,7 +15,7 @@ export class CadastroComponent implements OnInit {
   tutorCriarDTO: TutorCriarDTO = {
     nome: "",
     cpf: "",
-    endereco: "",
+    email: "",
     telefone: "",
     dataNascimento: "",
     pacienteList: [{
@@ -34,7 +34,7 @@ export class CadastroComponent implements OnInit {
     this.tutorForm = this.fb.group({
       nome: [''],
       cpf: [''],
-      endereco: [''],
+      email: [''],
       telefone: [''],
       dataNascimento: [''],
       nomep: [''],
@@ -59,7 +59,7 @@ export class CadastroComponent implements OnInit {
     console.log('entrou');
     this.tutorCriarDTO.nome = this.tutorForm.value.nome;
     this.tutorCriarDTO.cpf = this.tutorForm.value.cpf;
-    this.tutorCriarDTO.endereco = this.tutorForm.value.endereco;
+    this.tutorCriarDTO.email = this.tutorForm.value.email;
     this.tutorCriarDTO.telefone = this.tutorForm.value.telefone;
     this.tutorCriarDTO.dataNascimento = this.tutorForm.value.dataNascimento;
     this.tutorCriarDTO.pacienteList[0].nome = this.tutorForm.value.nomep;

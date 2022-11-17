@@ -15,6 +15,10 @@ export class DesativadosComponent implements OnInit {
   tutorId: number | string = "";
 
   ngOnInit(): void {
+    this.buscarTutoresDesativados();
+  }
+
+  buscarTutoresDesativados(){
     this.tutorService.getDesativeTutores().subscribe(res => {
       console.log(res);
       this.tutor = Object.values(res);
@@ -24,7 +28,9 @@ export class DesativadosComponent implements OnInit {
   ativarTutor(tutor: Tutor) {
     this.tutorId = tutor.id;
     this.tutorService.ativarTutor(this.tutorId)
-      .subscribe(res => console.log(res));
+      .subscribe(() => {
+        this.buscarTutoresDesativados();
+      });
   }
 
 }

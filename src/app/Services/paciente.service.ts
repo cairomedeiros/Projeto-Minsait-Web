@@ -23,4 +23,8 @@ export class PacienteService {
   excluirPet(id: number | string): Observable<Paciente> {
     return this.httpClient.delete<Paciente>(`${environment.apiURL}/paciente/${id}`);
   }
+
+  buscarPets(): Observable<Paciente[]>{
+    return this.httpClient.get<Paciente[]>(`${environment.apiURL}/paciente`);
+  }
 }
