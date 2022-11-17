@@ -15,6 +15,7 @@
 
         .tutor-form {
             width: 30%;
+
             .form-group {
                 width: 100%;
                 display: flex;
@@ -24,8 +25,9 @@
             }
         }
 
-        .paciente-form{
+        .paciente-form {
             width: 30%;
+
             .form-group {
                 width: 100%;
                 display: flex;
@@ -37,31 +39,50 @@
     }
 }
 
-:host ::ng-deep{
-    .form-container-criar{
-        .content-forms{
-            .paciente-form{
-                .alinhar-inputs{
+:host ::ng-deep {
+    .form-container-criar {
+        .content-forms {
+            .paciente-form {
+                .alinhar-inputs {
                     display: flex;
                     justify-content: center;
                     align-items: center;
                     gap: 20px;
-                    
-                    .p-inputtext{
+
+                    .p-inputtext {
                         display: flex;
                         width: 100%;
                     }
                 }
             }
-            
-            .tutor-form, .paciente-form{
-                .p-inputtext, .p-inputnumber{
+
+            .tutor-form,
+            .paciente-form {
+
+                .p-inputtext,
+                .p-inputnumber {
                     width: 100%;
                 }
             }
+
+            .p-inputmask:hover,
+            .p-inputtext:hover,
+            .p-inputmask:enabled:active,
+            .p-inputtext:enabled:active {
+                border: 1px solid var(--btn-cancelar-hover);
+            }
+
+            .p-inputmask:focus,
+            .p-inputtext:focus {
+                -webkit-box-shadow: 0px 0px 8px 0px rgba(102, 102, 102, 1);
+                -moz-box-shadow: 0px 0px 8px 0px rgba(102, 102, 102, 1);
+                box-shadow: 0px 0px 8px 0px rgba(102, 102, 102, 1);
+                border-color: var(--btn-cancelar-hover);
+            }
         }
-        .acoes{
-            
+
+        .acoes {
+
             .p-button {
                 width: 200px;
                 display: flex;
@@ -71,18 +92,18 @@
                 background: var(--primary);
                 border: 1px solid var(--primary);
             }
-    
+
             .p-button:hover {
                 background: var(--hoverBtn);
                 border: 1px solid var(--hoverBtn);
             }
-    
+
             .p-button:focus {
                 -webkit-box-shadow: 0px 0px 8px 0px rgba(10, 136, 90, 1);
                 -moz-box-shadow: 0px 0px 8px 0px rgba(10, 136, 90, 1);
                 box-shadow: 0px 0px 8px 0px rgba(10, 136, 90, 1);
             }
-    
+
             .p-button:enabled:active {
                 background: var(--primary);
                 color: var(--bg);

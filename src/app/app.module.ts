@@ -19,7 +19,7 @@ import {ConfirmationService} from 'primeng/api';
 import {InputMaskModule} from 'primeng/inputmask';
 import {InputNumberModule} from 'primeng/inputnumber';
 import { DesativadosComponent } from './Pages/desativados/desativados.component';
-
+import {DropdownModule} from 'primeng/dropdown';
 
 
 @NgModule({
@@ -44,7 +44,8 @@ import { DesativadosComponent } from './Pages/desativados/desativados.component'
     ReactiveFormsModule,
     ConfirmDialogModule,
     InputMaskModule,
-    InputNumberModule
+    InputNumberModule,
+    DropdownModule
   ],
   providers: [ConfirmationService],
   bootstrap: [AppComponent]

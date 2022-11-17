@@ -3,6 +3,7 @@ import { TutorService } from 'src/app/Services/Tutor.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TutorCriarDTO } from 'src/app/Interfaces/TutorCriarDTO';
+import { Triagem } from 'src/app/Interfaces/Triagem';
 
 @Component({
   selector: 'app-cadastro',
@@ -27,8 +28,11 @@ export class CadastroComponent implements OnInit {
       cor: "",
       eResultadoTriagem: 0
     }]
-
   };
+
+  areaTriagem: Triagem[];
+  triagemResultado: Triagem = {name: ""};
+  triagemResultadoInt: number = 0;
 
   constructor(
     private tutorService: TutorService, 
@@ -49,7 +53,44 @@ export class CadastroComponent implements OnInit {
       cor: [''],
       eResultadoTriagem: ['']
 
-    })
+    });
+
+    this.areaTriagem = [
+      {name: "Cardiologia"},
+      {name: "Nefrologia"},
+      {name: "Endocrinologia"},
+      {name: "Fisioterapia"},
+      {name: "Hematologia"},
+      {name: "Odontologia"},
+      {name: "Nutrologia"},
+      {name: "Ortopedia"},
+      {name: "Oftalmologia"}
+    ]
+  }
+
+  eResultadoTriagemConverter(e: Triagem){
+    switch(e.name){
+      case "Cardiologia" : 
+        return this.triagemResultadoInt = 0;
+      case "Nefrologia": 
+        return this.triagemResultadoInt = 1;
+      case "Endocrinologia": 
+        return this.triagemResultadoInt = 2;
+      case "Fisioterapia": 
+        return this.triagemResultadoInt = 3;
+      case "Hematologia": 
+        return this.triagemResultadoInt = 4;
+      case "Odontologia": 
+        return this.triagemResultadoInt = 5;
+      case "Nutrologia" : 
+        return this.triagemResultadoInt = 6;
+      case "Ortopedia": 
+        return this.triagemResultadoInt = 7;
+      case "Oftalmologia" : 
+        return this.triagemResultadoInt = 8;
+      default:
+        return "Triagem não feita";
+    }
   }
 
   ngOnInit(): void {
@@ -60,7 +101,6 @@ export class CadastroComponent implements OnInit {
   }
 
   cadastroTutor() {
-    console.log('entrou');
     this.tutorCriarDTO.nome = this.tutorForm.value.nome;
     this.tutorCriarDTO.cpf = this.tutorForm.value.cpf;
     this.tutorCriarDTO.email = this.tutorForm.value.email;
@@ -72,7 +112,11 @@ export class CadastroComponent implements OnInit {
     this.tutorCriarDTO.pacienteList[0].idade = this.tutorForm.value.idade;
     this.tutorCriarDTO.pacienteList[0].peso = this.tutorForm.value.peso;
     this.tutorCriarDTO.pacienteList[0].cor = this.tutorForm.value.cor;
-    this.tutorCriarDTO.pacienteList[0].eResultadoTriagem = this.tutorForm.value.eResultadoTriagem;
+
+    this.triagemResultado = this.tutorForm.value.eResultadoTriagem;
+    this.eResultadoTriagemConverter(this.triagemResultado);
+    
+    this.tutorCriarDTO.pacienteList[0].eResultadoTriagem = this.triagemResultadoInt;
 
     this.tutorService.createTutor(this.tutorCriarDTO).subscribe(() => {
       this.router.navigate([""]);

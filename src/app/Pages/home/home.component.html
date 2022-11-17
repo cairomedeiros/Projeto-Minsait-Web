@@ -120,7 +120,7 @@
         </div>
         <div class="form-group">
             <label for="eResultadoTriagem">Resultado triagem</label>
-            <input type="number" id="eResultadoTriagem" formControlName="eResultadoTriagem" [(ngModel)]="pacienteEditar.eResultadoTriagem" pInputText/>
+            <p-dropdown [options]="areaTriagem" formControlName="eResultadoTriagem" placeholder="Selecione a área da triagem" optionLabel="name"></p-dropdown>
         </div>
         <div class="acoes">
             <p-button type="submit">Atualizar</p-button>
@@ -156,7 +156,7 @@
         </div>
         <div class="form-group">
             <label for="eResultadoTriagem">Resultado triagem</label>
-            <input type="number" id="eResultadoTriagem" formControlName="eResultadoTriagem" pInputText/>
+            <p-dropdown [options]="areaTriagem" formControlName="eResultadoTriagem" placeholder="Select a City" optionLabel="name" [showClear]="true"></p-dropdown>
         </div>
         <div class="acoes">
             <p-button type="submit">Adicionar</p-button>

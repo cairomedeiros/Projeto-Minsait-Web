@@ -13,6 +13,7 @@ import { TutorEditarDTO } from 'src/app/Interfaces/TutorEditarDTO';
 import { TutorEditar } from 'src/app/Interfaces/TutorEditar';
 import { PacienteEditarDTO } from 'src/app/Interfaces/PacienteEditarDTO';
 import { PacienteEditar } from 'src/app/Interfaces/PacienteEditar';
+import { Triagem } from 'src/app/Interfaces/Triagem';
 
 @Component({
   selector: 'app-home',
@@ -45,6 +46,11 @@ export class HomeComponent implements OnInit {
     tutorId: "",
     eResultadoTriagem: 0
   }
+
+  areaTriagem: Triagem[];
+  triagemResultado: Triagem = {name: ""};
+  triagemResultadoString: string = "";
+  triagemResultadoInt: number = 0;
 
   tutorForm!: FormGroup;
   pacienteForm!: FormGroup;
@@ -96,6 +102,43 @@ export class HomeComponent implements OnInit {
       cor: [''],
       eResultadoTriagem: ['']
     })
+
+    this.areaTriagem = [
+      {name: "Cardiologia"},
+      {name: "Nefrologia"},
+      {name: "Endocrinologia"},
+      {name: "Fisioterapia"},
+      {name: "Hematologia"},
+      {name: "Odontologia"},
+      {name: "Nutrologia"},
+      {name: "Ortopedia"},
+      {name: "Oftalmologia"}
+    ]
+  }
+
+  eResultadoTriagemConverter(e: Triagem){
+    switch(e.name){
+      case "Cardiologia" : 
+        return this.triagemResultadoInt = 0;
+      case "Nefrologia": 
+        return this.triagemResultadoInt = 1;
+      case "Endocrinologia": 
+        return this.triagemResultadoInt = 2;
+      case "Fisioterapia": 
+        return this.triagemResultadoInt = 3;
+      case "Hematologia": 
+        return this.triagemResultadoInt = 4;
+      case "Odontologia": 
+        return this.triagemResultadoInt = 5;
+      case "Nutrologia" : 
+        return this.triagemResultadoInt = 6;
+      case "Ortopedia": 
+        return this.triagemResultadoInt = 7;
+      case "Oftalmologia" : 
+        return this.triagemResultadoInt = 8;
+      default:
+        return "Triagem não feita";
+    }
   }
 
   ngOnInit(): void {
@@ -165,6 +208,7 @@ export class HomeComponent implements OnInit {
     this.pacienteEditar.idade = paciente.idade;
     this.pacienteEditar.peso = paciente.peso;
     this.pacienteEditar.cor = paciente.cor;
+
     this.pacienteEditar.eResultadoTriagem = paciente.eResultadoTriagem;
 
     this.displayAtualizarPet = true;
@@ -175,6 +219,10 @@ export class HomeComponent implements OnInit {
   }
 
   atualizarPet() {
+    this.triagemResultado = this.pacienteForm.value.eResultadoTriagem;
+    this.eResultadoTriagemConverter(this.triagemResultado);
+    this.pacienteForm.value.eResultadoTriagem = this.triagemResultadoInt;
+
     this.pacienteService.atualizarPet(this.pacienteEditar.id, this.pacienteForm.value).subscribe(() => {
       window.location.reload();
     });
@@ -200,7 +248,11 @@ export class HomeComponent implements OnInit {
       this.paciente.peso = this.pacienteForm.value.peso;
       this.paciente.cor = this.pacienteForm.value.cor;
       this.paciente.tutorId = this.tutorId;
-      this.paciente.eResultadoTriagem = this.pacienteForm.value.eResultadoTriagem;
+
+      this.triagemResultado = this.pacienteForm.value.eResultadoTriagem;
+      this.eResultadoTriagemConverter(this.triagemResultado);
+
+      this.paciente.eResultadoTriagem = this.triagemResultadoInt;
 
       this.pacienteService.criarPet(this.paciente).subscribe(() => {
         window.location.reload();
