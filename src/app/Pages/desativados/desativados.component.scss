@@ -1,5 +1,8 @@
 .card {
     margin: 50px 3.8% 0;
+    .title{
+        margin-bottom: 20px;
+    }
 }
 
 :host ::ng-deep {
