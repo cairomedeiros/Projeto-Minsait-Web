@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TutorService } from 'src/app/Services/Tutor.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TutorCriarDTO } from 'src/app/Interfaces/TutorCriarDTO';
 import { Triagem } from 'src/app/Interfaces/Triagem';
@@ -30,6 +30,8 @@ export class CadastroComponent implements OnInit {
     }]
   };
 
+  submitted: boolean = false;
+
   areaTriagem: Triagem[];
   triagemResultado: Triagem = {name: ""};
   triagemResultadoInt: number = 0;
@@ -40,18 +42,18 @@ export class CadastroComponent implements OnInit {
     private router: Router
     ) {
     this.tutorForm = this.fb.group({
-      nome: [''],
-      cpf: [''],
-      email: [''],
-      telefone: [''],
-      dataNascimento: [''],
-      nomep: [''],
-      especie: [''],
-      raca: [''],
-      idade: [''],
-      peso: [''],
-      cor: [''],
-      eResultadoTriagem: ['']
+      nome: ['', [Validators.required]],
+      cpf: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      telefone: ['', [Validators.required]],
+      dataNascimento: ['', [Validators.required]],
+      nomep: ['', [Validators.required]],
+      especie: ['', [Validators.required]],
+      raca: ['', [Validators.required]],
+      idade: ['', [Validators.required]],
+      peso: ['', [Validators.required]],
+      cor: ['', [Validators.required]],
+      eResultadoTriagem: ['', [Validators.required]]
 
     });
 
@@ -97,7 +99,18 @@ export class CadastroComponent implements OnInit {
   }
 
   submitCadastro() {
-    this.cadastroTutor();
+    this.submitted = true;
+
+    if (this.tutorForm.invalid) {
+      return;
+    }else{
+      this.cadastroTutor();
+    }   
+  }
+
+  onReset(): void {
+    this.submitted = false;
+    this.tutorForm.reset();
   }
 
   cadastroTutor() {

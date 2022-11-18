@@ -127,4 +127,25 @@
             }
         }
     }
+
+    .campos-invalidos{
+            border: 1px solid red;   
+    }
+
+    .campos-invalidos-dropdown{
+        .p-dropdown{
+            border: 1px solid red;
+        }
+    }
+
+    .campos-invalidos-number{
+        .p-inputtext{
+            border: 1px solid red;
+        }
+    }
+
+    .msg-validacao{
+        color: red;
+        font-size: 0.8em;
+    }
 }

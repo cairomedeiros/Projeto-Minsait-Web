@@ -4,24 +4,50 @@
             <h1>Tutor</h1>
             <div class="form-group">
                 <label for="nome">Nome</label>
-                <input type="text" id="nome" formControlName="nome" placeholder="Nome" pInputText />
+                <input [ngClass]="{'campos-invalidos': submitted && tutorForm.controls['nome'].errors}" type="text" id="nome" formControlName="nome" placeholder="Nome" pInputText/>
+
+                <div *ngIf="submitted && tutorForm.controls['nome'].errors">
+                    <div *ngIf="tutorForm.controls['nome'].errors?.['required']">
+                       <p class="msg-validacao">Campo obrigatório</p>
+                    </div>
+                </div>
             </div>
             <div class="form-group">
                 <label for="cpf">CPF</label>
-                <input type="text" id="cpf" formControlName="cpf" placeholder="CPF" pInputText />
+                <p-inputMask [ngClass]="{'campos-invalidos-number': submitted && tutorForm.controls['cpf'].errors}" type="text" id="cpf" formControlName="cpf" placeholder="CPF" mask="99999999999"></p-inputMask>
+                <div *ngIf="submitted && tutorForm.controls['cpf'].errors">
+                    <div *ngIf="tutorForm.controls['cpf'].errors?.['required']">
+                       <p class="msg-validacao">Campo obrigatório</p>
+                    </div>
+                </div>
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="text" id="email" formControlName="email" pInputText placeholder="Email"/>
+                <input [ngClass]="{'campos-invalidos': submitted && tutorForm.controls['email'].errors}" type="text" id="email" formControlName="email" pInputText placeholder="Email"/>
+                <div *ngIf="submitted && tutorForm.controls['email'].errors">
+                    <div *ngIf="tutorForm.controls['email'].errors?.['required']">
+                       <p class="msg-validacao">Campo obrigatório</p>
+                    </div>
+                </div>
             </div>
             <div class="form-group">
                 <label for="telefone">Telefone</label>
-                <input type="text" id="telefone" formControlName="telefone" placeholder="Telefone" pInputText />
+                <input [ngClass]="{'campos-invalidos': submitted && tutorForm.controls['telefone'].errors}" type="text" id="telefone" formControlName="telefone" placeholder="Telefone" pInputText />
+                <div *ngIf="submitted && tutorForm.controls['telefone'].errors">
+                    <div *ngIf="tutorForm.controls['telefone'].errors?.['required']">
+                       <p class="msg-validacao">Campo obrigatório</p>
+                    </div>
+                </div>
             </div>
             <div class="form-group">
                 <label for="dataNascimento">Data de nascimento</label>
-                <p-inputMask formControlName="dataNascimento" mask="99/99/9999" placeholder="99/99/9999"
+                <p-inputMask [ngClass]="{'campos-invalidos-number': submitted && tutorForm.controls['dataNascimento'].errors}" formControlName="dataNascimento" mask="99/99/9999" placeholder="99/99/9999"
                     slotChar="dd/MM/yyyy" id="dataNascimento"></p-inputMask>
+                    <div *ngIf="submitted && tutorForm.controls['dataNascimento'].errors">
+                        <div *ngIf="tutorForm.controls['dataNascimento'].errors?.['required']">
+                           <p class="msg-validacao">Campo obrigatório</p>
+                        </div>
+                    </div>    
             </div>
         </div>
 
@@ -29,39 +55,74 @@
             <h1>Paciente</h1>
             <div class="form-group">
                 <label for="nomep">Nome</label>
-                <input type="text" id="nomep" formControlName="nomep" pInputText placeholder="Nome do Pet"/>
+                <input [ngClass]="{'campos-invalidos': submitted && tutorForm.controls['nomep'].errors}" type="text" id="nomep" formControlName="nomep" pInputText placeholder="Nome do Pet"/>
+                <div *ngIf="submitted && tutorForm.controls['nomep'].errors">
+                    <div *ngIf="tutorForm.controls['nomep'].errors?.['required']">
+                       <p class="msg-validacao">Campo obrigatório</p>
+                    </div>
+                </div>
             </div>
             <div class="alinhar-inputs">
                 <div class="form-group">
                     <label for="especie">Especie</label>
-                    <input type="text" id="especie" formControlName="especie" pInputText placeholder="Espécie"/>
+                    <input [ngClass]="{'campos-invalidos': submitted && tutorForm.controls['especie'].errors}" type="text" id="especie" formControlName="especie" pInputText placeholder="Espécie"/>
+                    <div *ngIf="submitted && tutorForm.controls['especie'].errors">
+                        <div *ngIf="tutorForm.controls['especie'].errors?.['required']">
+                           <p class="msg-validacao">Campo obrigatório</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="raca">Raça</label>
-                    <input type="text" id="raca" formControlName="raca" pInputText placeholder="Raça"/>
+                    <input [ngClass]="{'campos-invalidos': submitted && tutorForm.controls['raca'].errors}" type="text" id="raca" formControlName="raca" pInputText placeholder="Raça"/>
+                    <div *ngIf="submitted && tutorForm.controls['raca'].errors">
+                        <div *ngIf="tutorForm.controls['raca'].errors?.['required']">
+                           <p class="msg-validacao">Campo obrigatório</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             
             <div class="alinhar-inputs">
                 <div class="form-group">
                     <label for="idade">Idade</label>
-                    <p-inputNumber inputId="integeronly" formControlName="idade"></p-inputNumber>
+                    <p-inputNumber [ngClass]="{'campos-invalidos-number': submitted && tutorForm.controls['idade'].errors}" inputId="integeronly" formControlName="idade"></p-inputNumber>
+                    <div *ngIf="submitted && tutorForm.controls['idade'].errors">
+                        <div *ngIf="tutorForm.controls['idade'].errors?.['required']">
+                           <p class="msg-validacao">Campo obrigatório</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="peso">Peso</label>
-                    <p-inputNumber inputId="minmaxfraction" formControlName="peso" mode="decimal" [minFractionDigits]="2"
+                    <p-inputNumber [ngClass]="{'campos-invalidos-number': submitted && tutorForm.controls['peso'].errors}" inputId="minmaxfraction" formControlName="peso" mode="decimal" [minFractionDigits]="2"
                         [maxFractionDigits]="5">
                     </p-inputNumber>
+                    <div *ngIf="submitted && tutorForm.controls['peso'].errors">
+                        <div *ngIf="tutorForm.controls['peso'].errors?.['required']">
+                           <p class="msg-validacao">Campo obrigatório</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             
             <div class="form-group">
                 <label for="cor">Cor</label>
-                <input type="text" id="cor" formControlName="cor" pInputText placeholder="Cor"/>
+                <input [ngClass]="{'campos-invalidos': submitted && tutorForm.controls['cor'].errors}" type="text" id="cor" formControlName="cor" pInputText placeholder="Cor"/>
+                <div *ngIf="submitted && tutorForm.controls['cor'].errors">
+                    <div *ngIf="tutorForm.controls['cor'].errors?.['required']">
+                       <p class="msg-validacao">Campo obrigatório</p>
+                    </div>
+                </div>
             </div>
             <div class="form-group">
                 <label for="eResultadoTriagem">Resultado triagem</label>
-                <p-dropdown [options]="areaTriagem" formControlName="eResultadoTriagem" placeholder="Resultado da Triagem" optionLabel="name" [showClear]="true"></p-dropdown>
+                <p-dropdown [ngClass]="{'campos-invalidos-dropdown': submitted && tutorForm.controls['eResultadoTriagem'].errors}" [options]="areaTriagem" formControlName="eResultadoTriagem" placeholder="Resultado da Triagem" optionLabel="name" [showClear]="true"></p-dropdown>
+                <div *ngIf="submitted && tutorForm.controls['eResultadoTriagem'].errors">
+                    <div *ngIf="tutorForm.controls['eResultadoTriagem'].errors?.['required']">
+                       <p class="msg-validacao">Campo obrigatório</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

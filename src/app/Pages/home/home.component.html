@@ -132,31 +132,66 @@
     <form class="form-container"  [formGroup]="pacienteForm" (ngSubmit)="submitAdicionarPet()" #formDir="ngForm">
         <div class="form-group">
             <label for="nome">Nome</label>
-            <input type="text" id="nome" formControlName="nome" pInputText/>
+            <input [ngClass]="{'campos-invalidos': submitted && pacienteForm.controls['nome'].errors}" type="text" id="nome" formControlName="nome" pInputText/>
+            <div *ngIf="submitted && pacienteForm.controls['nome'].errors">
+                <div *ngIf="pacienteForm.controls['nome'].errors?.['required']">
+                   <p class="msg-validacao">Campo obrigatório</p>
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <label for="especie">Espécie</label>
-            <input id="especie" formControlName="especie" pInputText/>
+            <input [ngClass]="{'campos-invalidos': submitted && pacienteForm.controls['especie'].errors}" id="especie" formControlName="especie" pInputText/>
+            <div *ngIf="submitted && pacienteForm.controls['especie'].errors">
+                <div *ngIf="pacienteForm.controls['especie'].errors?.['required']">
+                   <p class="msg-validacao">Campo obrigatório</p>
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <label for="raca">Raça</label>
-            <input type="text" id="raca" formControlName="raca" pInputText/>
+            <input [ngClass]="{'campos-invalidos': submitted && pacienteForm.controls['raca'].errors}" type="text" id="raca" formControlName="raca" pInputText/>
+            <div *ngIf="submitted && pacienteForm.controls['raca'].errors">
+                <div *ngIf="pacienteForm.controls['raca'].errors?.['required']">
+                   <p class="msg-validacao">Campo obrigatório</p>
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <label for="idade">Idade</label>
-            <input type="number" id="idade" formControlName="idade" pInputText/>
+            <input [ngClass]="{'campos-invalidos-number': submitted && pacienteForm.controls['idade'].errors}" type="number" id="idade" formControlName="idade" pInputText/>
+            <div *ngIf="submitted && pacienteForm.controls['idade'].errors">
+                <div *ngIf="pacienteForm.controls['idade'].errors?.['required']">
+                   <p class="msg-validacao">Campo obrigatório</p>
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <label for="peso">Peso</label>
-            <input type="number" id="peso" formControlName="peso" pInputText/>
+            <input [ngClass]="{'campos-invalidos-number': submitted && pacienteForm.controls['peso'].errors}" type="number" id="peso" formControlName="peso" pInputText/>
+            <div *ngIf="submitted && pacienteForm.controls['peso'].errors">
+                <div *ngIf="pacienteForm.controls['peso'].errors?.['required']">
+                   <p class="msg-validacao">Campo obrigatório</p>
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <label for="cor">Cor</label>
-            <input type="text" id="cor" formControlName="cor" pInputText/>
+            <input [ngClass]="{'campos-invalidos': submitted && pacienteForm.controls['cor'].errors}" type="text" id="cor" formControlName="cor" pInputText/>
+            <div *ngIf="submitted && pacienteForm.controls['cor'].errors">
+                <div *ngIf="pacienteForm.controls['cor'].errors?.['required']">
+                   <p class="msg-validacao">Campo obrigatório</p>
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <label for="eResultadoTriagem">Resultado triagem</label>
-            <p-dropdown [options]="areaTriagem" formControlName="eResultadoTriagem" placeholder="Resultado da Triagem" optionLabel="name" [showClear]="true"></p-dropdown>
+            <p-dropdown [ngClass]="{'campos-invalidos-dropdown': submitted && pacienteForm.controls['eResultadoTriagem'].errors}" [options]="areaTriagem" formControlName="eResultadoTriagem" placeholder="Resultado da Triagem" optionLabel="name" [showClear]="true"></p-dropdown>
+            <div *ngIf="submitted && pacienteForm.controls['eResultadoTriagem'].errors">
+                <div *ngIf="pacienteForm.controls['eResultadoTriagem'].errors?.['required']">
+                   <p class="msg-validacao">Campo obrigatório</p>
+                </div>
+            </div>
         </div>
         <div class="acoes">
             <p-button type="submit">Adicionar</p-button>

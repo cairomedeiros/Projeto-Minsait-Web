@@ -11,7 +11,7 @@
 
     }
 
-    .btn-atualizar{
+    .btn-atualizar {
         margin-right: 20px;
     }
 }
@@ -174,12 +174,14 @@
         }
     }
 
-    .p-dropdown{
+    .p-dropdown {
         width: 100%;
-        .p-inputtext{
+
+        .p-inputtext {
             border: none;
         }
-        .p-inputtext:hover{
+
+        .p-inputtext:hover {
             border: none;
         }
     }
@@ -247,6 +249,25 @@
         }
     }
 
+    .campos-invalidos {
+        border: 1px solid red;
+    }
+
+    .campos-invalidos-dropdown {
+        .p-dropdown {
+            border: 1px solid red;
+        }
+    }
+
+    .campos-invalidos-number {
+        border: 1px solid red;
+    }
+
+}
+
+.msg-validacao {
+    color: red;
+    font-size: 0.8em;
 }
 
 .form-container {

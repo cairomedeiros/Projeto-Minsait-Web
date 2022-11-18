@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Tutor } from 'src/app/Interfaces/Tutor';
 import { TutorDTO } from 'src/app/Interfaces/TutorDTO';
 import { TutorService } from 'src/app/Services/Tutor.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ConfirmationService } from 'primeng/api';
 import { PacienteService } from 'src/app/Services/paciente.service';
 import { PacienteCriarDTO } from 'src/app/Interfaces/PacienteCriarDTO';
@@ -55,6 +55,8 @@ export class HomeComponent implements OnInit {
   tutorForm!: FormGroup;
   pacienteForm!: FormGroup;
 
+  submitted: boolean = false;
+
   eResultadoTriagem(e: number){
     switch(e){
       case 0 : 
@@ -94,13 +96,13 @@ export class HomeComponent implements OnInit {
     })
 
     this.pacienteForm = this.fb.group({
-      nome: [''],
-      especie: [''],
-      raca: [''],
-      idade: [''],
-      peso: [''],
-      cor: [''],
-      eResultadoTriagem: ['']
+      nome: ['', [Validators.required]],
+      especie: ['', [Validators.required]],
+      raca: ['', [Validators.required]],
+      idade: ['', [Validators.required]],
+      peso: ['', [Validators.required]],
+      cor: ['', [Validators.required]],
+      eResultadoTriagem: ['', [Validators.required]]
     })
 
     this.areaTriagem = [
@@ -230,6 +232,7 @@ export class HomeComponent implements OnInit {
   }
 
   adicionarPetDialogOficial(tutor: Tutor) {
+    this.submitted = false;
     this.pacienteForm.reset();
     this.tutorId = "";
     this.tutorId = tutor.id;
@@ -240,7 +243,17 @@ export class HomeComponent implements OnInit {
     this.pacienteService.buscarPets().subscribe(r => console.log(r));
   }
 
-  submitAdicionarPet() {
+  submitAdicionarPet(){
+    this.submitted = true;
+
+    if(this.pacienteForm.invalid){
+      return;
+    }else{
+      this.AdicionarPet();
+    }
+  }
+
+  AdicionarPet() {
       this.paciente.nome = this.pacienteForm.value.nome;
       this.paciente.especie = this.pacienteForm.value.especie;
       this.paciente.raca = this.pacienteForm.value.raca;
