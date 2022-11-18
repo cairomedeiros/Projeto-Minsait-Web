@@ -55,7 +55,7 @@
             <h1>Paciente</h1>
             <div class="form-group">
                 <label for="nomep">Nome</label>
-                <input [ngClass]="{'campos-invalidos': submitted && tutorForm.controls['nomep'].errors}" type="text" id="nomep" formControlName="nomep" pInputText placeholder="Nome do Pet"/>
+                <input [ngClass]="{'campos-invalidos': submitted && tutorForm.controls['nomep'].errors}" type="text" id="nomep" formControlName="nomep" pInputText placeholder="Nome do Paciente"/>
                 <div *ngIf="submitted && tutorForm.controls['nomep'].errors">
                     <div *ngIf="tutorForm.controls['nomep'].errors?.['required']">
                        <p class="msg-validacao">Campo obrigatório</p>

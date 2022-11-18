@@ -18,10 +18,10 @@
                 <td>{{tutor.email}}</td>
                 <td>{{tutor.telefone}}</td>
                 <td class="funcionalidades-tabela">
-                    <p-button class="btn-pets" type="button" (click)="showDialog(tutor)" label="PETS"></p-button>
-                    <p-button class="btn-atualizar" type="button" (click)="atualizarTutorDialog(tutor)" label="Atualizar"></p-button>
-                    <p-button class="btn-desativar" type="button" (click)="confirm(tutor)" label="Desativar"></p-button>
-                    <p-button class="btn-adicionar" type="button" (click)="display = false" (click)="adicionarPetDialogOficial(tutor)" label="Novo Pet"></p-button>
+                    <p-button class="btn-pets" type="button" (click)="showDialog(tutor)" label="Pacientes"></p-button>
+                    <p-button class="btn-atualizar" type="button" (click)="atualizarTutorDialog(tutor)" label="Atualizar Tutor"></p-button>
+                    <p-button class="btn-desativar" type="button" (click)="confirm(tutor)" label="Desativar Tutor"></p-button>
+                    <p-button class="btn-adicionar" type="button" (click)="display = false" (click)="adicionarPetDialogOficial(tutor)" label="Novo Paciente"></p-button>
                 </td>
             </tr>
         </ng-template>
@@ -55,7 +55,7 @@
                     <td>{{tutorPacientes.peso}}</td>
                     <td>{{eResultadoTriagem(tutorPacientes.eResultadoTriagem)}}</td>
                     <td>
-                        <p-button class="btn-atualizar" type="button" (click)="display = false" (click)="atualizarPetDialog(tutorPacientes)" label="Atualizar Pet"></p-button>
+                        <p-button class="btn-atualizar" type="button" (click)="display = false" (click)="atualizarPetDialog(tutorPacientes)" label="Atualizar Paciente"></p-button>
                         <p-button class="btn-desativar" type="button" (click)="confirm2(tutorPacientes)" label="Deletar"></p-button>
                     </td>
                 </tr>
